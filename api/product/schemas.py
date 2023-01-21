@@ -15,16 +15,16 @@ class ProductBase(BaseModel):
     dimensions: Dimension = None
 
 
-class ProductIn(ProductBase):
+class UserIn(ProductBase):
     pass
 
 
-class ProductInPut(ProductBase):
+class UserInPut(ProductBase):
     name: str = None
     price: int = None
 
 
-class ProductOut(ProductBase):
+class UserOut(ProductBase):
     id: int
 
 

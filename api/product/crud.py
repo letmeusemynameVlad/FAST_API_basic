@@ -5,37 +5,37 @@ Update
 Delete
 """
 
-from api.product.schemas import ProductIn, ProductOut, ProductInPut
+from api.product.schemas import UserIn, UserOut, UserInPut
 from api.product.helper import Helper
 
 
 helper = Helper()
 
 
-def create_product(product_in: ProductIn) -> ProductOut:
-    product = ProductOut(**product_in.dict(), id=helper.next_id)
+def create_product(product_in: UserIn) -> UserOut:
+    product = UserOut(**product_in.dict(), id=helper.next_id)
     helper.db[product.id] = product
 
     return product
 
 
-def get_product_by_id(product_id: int) -> ProductOut:
+def get_product_by_id(product_id: int) -> UserOut:
     product = helper.db[product_id]
     return product
 
 
-def get_products() -> list[ProductOut]:
+def get_products() -> list[UserOut]:
     products = list(helper.db.values())
     return products
 
 
-def put_product(product_id: int, product_in: ProductInPut) -> ProductOut:
+def put_product(product_id: int, product_in: UserInPut) -> UserOut:
     product = helper.db[product_id].dict()
     for i, j in product_in.dict().items():
         if i in product and j is not None:
             product[i] = j
 
-    product_out = ProductOut(**product)
+    product_out = UserOut(**product)
     helper.db[product_id] = product_out
 
     return product_out

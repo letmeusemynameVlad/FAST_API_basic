@@ -3,24 +3,24 @@ from typing import List
 from fastapi import APIRouter
 
 from api.product import crud
-from api.product.schemas import ProductIn, ProductOut, ProductInPut
+from api.product.schemas import UserIn, UserOut, UserInPut
 
 
 router_product = APIRouter(prefix="/product", tags=["Product"])
 
 
-@router_product.post("", response_model=ProductOut)
-def create_product(product_in: ProductIn) -> ProductOut:
+@router_product.post("", response_model=UserOut)
+def create_product(product_in: UserIn) -> UserOut:
     return crud.create_product(product_in)
 
 
-@router_product.get("/{product_id}", response_model=ProductOut)
-def get_product_by_id(product_id: int) -> ProductOut:
+@router_product.get("/{product_id}", response_model=UserOut)
+def get_product_by_id(product_id: int) -> UserOut:
     return crud.get_product_by_id(product_id)
 
 
-@router_product.get("s", response_model=List[ProductOut])
-def get_products() -> List[ProductOut]:
+@router_product.get("s", response_model=List[UserOut])
+def get_products() -> List[UserOut]:
     return crud.get_products()
 
 
@@ -30,5 +30,5 @@ def get_product_by_id(product_id: int) -> None:
 
 
 @router_product.put("/{product_id}")
-def put_product(product_id: int, product_in: ProductInPut) -> ProductOut:
+def put_product(product_id: int, product_in: UserInPut) -> UserOut:
     return crud.put_product(product_id, product_in)

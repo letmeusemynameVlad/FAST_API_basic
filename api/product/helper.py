@@ -1,9 +1,9 @@
-from api.product.schemas import ProductOut
+from api.product.schemas import UserOut
 
 
 class Helper:
     def __init__(self):
-        self.db: dict[int, ProductOut] = {}
+        self.db: dict[int, UserOut] = {}
         self.current_id = 0
 
     @property
