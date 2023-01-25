@@ -16,8 +16,7 @@ def create_user(user_in: UserIn) -> UserOut:
 
 @router_user.get("/{user_id}", response_model=UserOut)
 def get_user_by_id(user_id: int, token: str) -> UserOut:
-    crud.check_token(token)
-    return crud.get_user_by_id(user_id)
+    return crud.get_user_by_id(user_id, token)
 
 
 @router_user.get("s", response_model=List[UserOut])
@@ -36,4 +35,3 @@ def get_user_by_id(user_id: int, token: str) -> None:
 def put_user(user_id: int, user_in: UserInPut, token: str) -> UserOut:
     crud.check_token(token)
     return crud.put_user(user_id, user_in)
-
