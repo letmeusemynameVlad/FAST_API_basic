@@ -20,10 +20,6 @@ class UserIn(ProductBase):
     pass
 
 
-def generate_token():
-    return str(uuid4())
-
-
 class UserInPut(ProductBase):
     name: str = None
     price: int = None
@@ -31,6 +27,5 @@ class UserInPut(ProductBase):
 
 class UserOut(ProductBase):
     id: int
-    token: str = Field(default_factory=generate_token)
 
 
