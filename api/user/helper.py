@@ -4,6 +4,7 @@ from api.user.schemas import UserOut
 class Helper:
     def __init__(self):
         self.db: dict[int, UserOut] = {}
+        self.cache_by_token: dict[str, UserOut] = {}
         self.current_id = 0
 
     @property

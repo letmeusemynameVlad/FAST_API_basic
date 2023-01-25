@@ -12,6 +12,18 @@ from api.product.helper import Helper
 helper = Helper()
 
 
+def check_token(token):
+    if token in helper.cache_by_token:
+        pass
+    else:
+        raise ValueError(f"{token} is incorrect token")
+
+    if len(token) == 5:
+        pass
+    else:
+        raise ValueError("incorrect token")
+
+
 def create_product(product_in: UserIn) -> UserOut:
     product = UserOut(**product_in.dict(), id=helper.next_id)
     helper.db[product.id] = product

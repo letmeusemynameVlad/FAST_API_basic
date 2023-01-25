@@ -6,7 +6,7 @@ from api.user import crud
 from api.user.schemas import UserIn, UserOut, UserInPut
 
 
-router_user = APIRouter(prefix="/User", tags=["User"])
+router_user = APIRouter(prefix="/user", tags=["User"])
 
 
 @router_user.post("", response_model=UserOut)
@@ -15,20 +15,24 @@ def create_user(user_in: UserIn) -> UserOut:
 
 
 @router_user.get("/{user_id}", response_model=UserOut)
-def get_user_by_id(user_id: int) -> UserOut:
+def get_user_by_id(user_id: int, token: str) -> UserOut:
+    crud.check_token(token)
     return crud.get_user_by_id(user_id)
 
 
 @router_user.get("s", response_model=List[UserOut])
-def get_users() -> List[UserOut]:
+def get_users(token: str) -> List[UserOut]:
+    crud.check_token(token)
     return crud.get_users()
 
 
 @router_user.delete("/{user_id}")
-def get_user_by_id(user_id: int) -> None:
+def get_user_by_id(user_id: int, token: str) -> None:
+    crud.check_token(token)
     return crud.delete_user(user_id)
 
 
 @router_user.put("/{user_id}")
-def put_user(user_id: int, user_in: UserInPut) -> UserOut:
+def put_user(user_id: int, user_in: UserInPut, token: str) -> UserOut:
+    crud.check_token(token)
     return crud.put_user(user_id, user_in)

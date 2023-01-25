@@ -43,6 +43,8 @@ class Dimensions(BaseModel):
     length: int
     width: int
     height: int
+
+
 class ProductRequest(BaseModel):
     product_name: str
     price: int
