@@ -6,10 +6,11 @@ import uvicorn
 
 from models import UserRequest, UserResponse, Family  # custom modules, our self python files
 from api.product.views import router_product
-
+from api.user.views import router_user
 
 app = FastAPI()
 app.include_router(router_product)
+app.include_router(router_user)
 
 """
     :param user_id: is parameter of url (required-обязательно)
@@ -18,6 +19,4 @@ app.include_router(router_product)
     :return: simple json
 """
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
 
